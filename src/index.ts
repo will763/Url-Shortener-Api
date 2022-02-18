@@ -9,13 +9,17 @@ const port = process.env.PORT || 5000;
 
 app.use(cors());
 app.use(express.json());
-const urlController = new UrlController();
+//const urlController = new UrlController();
 
-const database = new MongoConnection();
-database.Connect();
+//const database = new MongoConnection();
+//database.Connect();
 
+app.get("/",(res,req) => {
+    req.json({message : "hello worl"})
+})
+/*
 app.post('/shorten',urlController.Shorten);
 app.get('/:hash',urlController.Redirect);
-
+*/
 
 app.listen(port);
