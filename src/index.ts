@@ -15,7 +15,7 @@ const database = new MongoConnection();
 database.Connect();
 
 app.get("/",(res,req) => {
-    req.json({message : "hello worl"})
+    req.json({message : "hello world"})
 })
 
 app.post('/shorten',urlController.Shorten);
