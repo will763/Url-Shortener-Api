@@ -10,12 +10,14 @@ export class UrlController {
         const {originURL} = req.body;
         const url = await URLModel.findOne({originURL});
         if(url) {
+            res.header("Access-Control-Allow-Origin", "*");
             res.status(200).json(url.shortURL);
             return;
         }
         const hash = shortId.generate();
         const shortURL = `${config.API_URL}/${hash}`;
         const newURL = await URLModel.create({originURL,hash,shortURL})
+        res.header("Access-Control-Allow-Origin", "*");
         res.status(201).json(newURL.shortURL);
     }
 
